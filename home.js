@@ -20,11 +20,11 @@ const projectsData = [
         title: "Neon Dreams",
         category: "Brand Identity",
         images: [
-            "https://source.unsplash.com/random/800x600/?branding,neon",
-            "https://source.unsplash.com/random/800x600/?logo,design",
-            "https://source.unsplash.com/random/800x600/?stationery,branding",
-            "https://source.unsplash.com/random/800x600/?business,card",
-            "https://source.unsplash.com/random/800x600/?packaging,design"
+            "church1.jpg",
+            "church2.jpg",
+            "church3.jpg",
+            "church4.jpg",
+            "church5.jpg"
         ],
         description: "A futuristic brand identity for an electronic music festival featuring glowing neon elements and cyberpunk aesthetics. The project involved creating a comprehensive visual system that worked across digital and physical applications while maintaining a cohesive futuristic feel.",
         client: "Neon Festivals Inc.",
@@ -36,75 +36,28 @@ const projectsData = [
         title: "Urban Decay",
         category: "Poster Series",
         images: [
-            "https://source.unsplash.com/random/800x600/?poster,urban",
-            "https://source.unsplash.com/random/800x600/?typography,poster",
-            "https://source.unsplash.com/random/800x600/?grunge,design",
-            "https://source.unsplash.com/random/800x600/?street,art",
-            "https://source.unsplash.com/random/800x600/?industrial,design"
+            "co1.jpg",
+            "co2.jpg",
+            "co3.jpg",
+            "co4.jpg",
+            "co5.jpg"
         ],
         description: "A series of posters exploring the beauty in urban decay and industrial landscapes for a photography exhibition. The typography was carefully integrated with the photographic elements to create a harmonious composition that told a visual story of urban transformation.",
         client: "Metro Gallery",
         year: "2022",
         services: "Print Design, Art Direction"
     },
-    {
-        id: 3,
-        title: "Minimalist",
-        category: "Packaging",
-        images: [
-            "https://source.unsplash.com/random/800x600/?packaging,minimal",
-            "https://source.unsplash.com/random/800x600/?cosmetic,package",
-            "https://source.unsplash.com/random/800x600/?luxury,product",
-            "https://source.unsplash.com/random/800x600/?white,design",
-            "https://source.unsplash.com/random/800x600/?clean,design"
-        ],
-        description: "Clean, minimalist packaging design for a luxury skincare line focusing on sustainability and purity. The design uses subtle embossing and a restrained color palette to communicate the brand's commitment to simplicity and quality ingredients.",
-        client: "Aurea Skincare",
-        year: "2023",
-        services: "Packaging, Brand Identity"
-    },
-    {
-        id: 4,
-        title: "Chromatic",
-        category: "Digital Campaign",
-        images: [
-            "https://source.unsplash.com/random/800x600/?digital,art",
-            "https://source.unsplash.com/random/800x600/?colorful,design",
-            "https://source.unsplash.com/random/800x600/?music,visual",
-            "https://source.unsplash.com/random/800x600/?abstract,art",
-            "https://source.unsplash.com/random/800x600/?gradient,design"
-        ],
-        description: "Vibrant digital campaign for a music streaming service featuring bold colors and dynamic typography. The campaign included social media assets, display ads, and animated banners that maintained visual consistency while allowing for creative variation across platforms.",
-        client: "SoundWave",
-        year: "2022",
-        services: "Digital Design, Motion Graphics"
-    },
-    {
-        id: 5,
-        title: "Type in Motion",
-        category: "Animation",
-        images: [
-            "https://source.unsplash.com/random/800x600/?typography,animation",
-            "https://source.unsplash.com/random/800x600/?kinetic,typography",
-            "https://source.unsplash.com/random/800x600/?moving,letters",
-            "https://source.unsplash.com/random/800x600/?text,design",
-            "https://source.unsplash.com/random/800x600/?font,design"
-        ],
-        description: "Kinetic typography series exploring the relationship between movement and letterforms in digital space. Each animation was carefully choreographed to music, creating a synesthetic experience where typography became a visual representation of sound.",
-        client: "TypeLab",
-        year: "2021",
-        services: "Motion Design, Art Direction"
-    },
+
     {
         id: 6,
         title: "Organic Forms",
         category: "Brand Identity",
         images: [
-            "https://source.unsplash.com/random/800x600/?organic,design",
-            "https://source.unsplash.com/random/800x600/?nature,inspired",
-            "https://source.unsplash.com/random/800x600/?cafe,branding",
-            "https://source.unsplash.com/random/800x600/?green,design",
-            "https://source.unsplash.com/random/800x600/?eco,friendly"
+            "sp1.jpg",
+            "sp2.jpg",
+            "sp3.jpg",
+            "sp4.jpg",
+            "sp5.jpg"
         ],
         description: "Nature-inspired brand identity for an organic cafe chain using fluid shapes and earthy tones. The identity system extended across packaging, signage, and digital platforms, with each application maintaining the organic, handcrafted feel while adapting to different contexts.",
         client: "GreenRoots Cafe",
@@ -114,18 +67,18 @@ const projectsData = [
 ];
 
 const galleryData = [
-    { id: 1, image: "https://source.unsplash.com/random/600x400/?poster,design", title: "Poster Series 01" },
-    { id: 2, image: "https://source.unsplash.com/random/600x400/?graphic,design", title: "Poster Series 02" },
-    { id: 3, image: "https://source.unsplash.com/random/600x400/?typography,art", title: "Experimental Typography" },
-    { id: 4, image: "https://source.unsplash.com/random/600x400/?digital,art", title: "Digital Artwork 01" },
-    { id: 5, image: "https://source.unsplash.com/random/600x400/?editorial,design", title: "Editorial Spread" },
-    { id: 6, image: "https://source.unsplash.com/random/600x400/?brand,exploration", title: "Brand Exploration" },
-    { id: 7, image: "https://source.unsplash.com/random/600x400/?package,design", title: "Packaging Concept" },
-    { id: 8, image: "https://source.unsplash.com/random/600x400/?poster,art", title: "Poster Series 03" },
-    { id: 9, image: "https://source.unsplash.com/random/600x400/?abstract,art", title: "Digital Artwork 02" },
-    { id: 10, image: "https://source.unsplash.com/random/600x400/?font,design", title: "Typography Study" },
-    { id: 11, image: "https://source.unsplash.com/random/600x400/?collage,art", title: "Collage Series" },
-    { id: 12, image: "https://source.unsplash.com/random/600x400/?print,design", title: "Poster Series 04" }
+    { id: 1, image: "g1.jpg", title: "Poster Series 01" },
+    { id: 2, image: "g2.jpg", title: "Poster Series 02" },
+    { id: 3, image: "g3.jpg", title: "Experimental Typography" },
+    { id: 4, image: "g4.jpg", title: "Digital Artwork 01" },
+    { id: 5, image: "g5.jpg", title: "Editorial Spread" },
+    { id: 6, image: "g6.jpg", title: "Brand Exploration" },
+    { id: 7, image: "g7.jpg", title: "Packaging Concept" },
+    { id: 8, image: "g8.jpg", title: "Poster Series 03" },
+    { id: 9, image: "g9.jpg", title: "Digital Artwork 02" },
+    { id: 10, image: "g10.jpg", title: "Typography Study" },
+    { id: 11, image: "g11.jpg", title: "Collage Series" },
+    { id: 12, image: "g12.jpg", title: "Poster Series 04" }
 ];
 
 const servicesData = [
