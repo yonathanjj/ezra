@@ -1,12 +1,12 @@
 /* Base Styles */
 :root {
     --primary-color: #0f0f0f;
-    --secondary-color: linear-gradient(135deg, #d9331b, #ff5200);
+    --secondary-color: linear-gradient(135deg, #d9331b, #d9331b);
     --text-color: #ffffff;
     --text-muted: #aaaaaa;
     --border-color: #d9331b;
     --hover-color: #222222;
-    --bg-grid-color: rgba(255, 255, 255, 0.03);
+--bg-grid-color: rgba(217, 51, 27, 0.12);
     --accent-light: #ff7b25;
     --accent-dark: #ff5200;
 }
@@ -684,7 +684,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-card {
     position: relative;
-    height: 300px;
+    height: 350px; /* Increased height */
     overflow: hidden;
     cursor: pointer;
     border: 1px solid var(--border-color);
@@ -692,6 +692,7 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0;
     transform: translateY(50px);
     border-radius: 5px;
+    background-color: #111; /* Added background for better visibility */
 }
 
 .project-card:hover {
@@ -702,8 +703,10 @@ h1, h2, h3, h4, h5, h6 {
 .project-image {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to contain */
     transition: transform 0.5s ease;
+    background-color: #111; /* Added background */
+    padding: 10px; /* Added padding */
 }
 
 .project-overlay {
@@ -726,7 +729,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-card:hover .project-image {
-    transform: scale(1.1);
+    transform: scale(1.05); /* Slightly reduced scaling */
 }
 
 .project-title {
@@ -825,7 +828,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increased min size */
     gap: 1.5rem;
     transform: translateY(20px);
     opacity: 0;
@@ -844,12 +847,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .gallery-item {
     position: relative;
-    height: 250px;
+    height: 300px; /* Increased height */
     overflow: hidden;
     cursor: pointer;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     border-radius: 5px;
+    background-color: #111; /* Added background */
 }
 
 .gallery-item:hover {
@@ -860,7 +864,8 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to contain */
+    padding: 10px; /* Added padding */
     transition: transform 0.5s ease;
 }
 
@@ -957,17 +962,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-image {
-    height: 400px;
+    min-height: 450px; /* Increased height */
     background-color: #111;
     border: 1px solid var(--border-color);
     overflow: hidden;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .main-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Changed from cover to contain */
+    padding: 20px; /* Added padding */
     animation: floatImage 8s infinite alternate ease-in-out;
 }
 
@@ -978,12 +987,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .thumbnail {
-    height: 80px;
+    height: 100px; /* Increased height */
     cursor: pointer;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
     overflow: hidden;
     border-radius: 3px;
+    background-color: #111; /* Added background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .thumbnail:hover {
@@ -991,9 +1004,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Changed from cover to contain */
+    padding: 5px; /* Added padding */
 }
 
 .popup-text-content {
