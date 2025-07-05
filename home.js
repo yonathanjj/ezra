@@ -1,542 +1,198 @@
-// DOM Elements
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-const aboutImages = document.querySelectorAll('.about-images img');
-const projectsGrid = document.querySelector('.projects-grid');
-const galleryButton = document.querySelector('.gallery-button');
-const fullscreenGallery = document.querySelector('.fullscreen-gallery');
-const closeGallery = document.querySelector('.close-gallery');
-const projectPopup = document.querySelector('.project-popup');
-const closePopup = document.querySelector('.close-popup');
-const galleryGrid = document.querySelector('.gallery-grid');
-const nav = document.querySelector('.nav');
-const contactForm = document.getElementById('contactForm');
-
-// Sample Data with multiple images per project
-const projectsData = [
-    {
-        id: 1,
-        title: "Kenean coffee",
-        category: "Posters",
-        images: [
-            "co1.jpg",
-            "co2.jpg",
-            "co3.jpg",
-            "co4.jpg",
-            "co5.jpg"
-        ],
-        description: "A futuristic brand identity for an electronic music festival featuring glowing neon elements and cyberpunk aesthetics. The project involved creating a comprehensive visual system that worked across digital and physical applications while maintaining a cohesive futuristic feel.",
-        client: "Neon Festivals Inc.",
-        year: "2023",
-        services: "Logo, Brand Guidelines, Merchandise"
-    },
-    {
-        id: 2,
-        title: "persona",
-        category: "Poster Series",
-        images: [
-            "persona1.jpg",
-            "persona2.jpg",
-            "persona3.jpg"
-        ],
-        description: "A series of posters exploring the beauty in urban decay and industrial landscapes for a photography exhibition. The typography was carefully integrated with the photographic elements to create a harmonious composition that told a visual story of urban transformation.",
-        client: "Metro Gallery",
-        year: "2022",
-        services: "Print Design, Art Direction"
-    },
-
-    {
-        id: 6,
-        title: "kabod",
-        category: "church posters",
-        images: [
-            "Kabod(1).jpg",
-            "kabod(2).jpg",
-            "kabod(3).jpg",
-            "kabod(4).jpg",
-            "kabod(5).jpg"
-        ],
-        description: "Nature-inspired brand identity for an organic cafe chain using fluid shapes and earthy tones. The identity system extended across packaging, signage, and digital platforms, with each application maintaining the organic, handcrafted feel while adapting to different contexts.",
-        client: "GreenRoots Cafe",
-        year: "2023",
-        services: "Logo, Brand Guidelines, Environmental Design"
-    }
-];
-
-const galleryData = [
-    { id: 1, image: "g1.jpg", title: "Poster Series 01" },
-    { id: 2, image: "g2.jpg", title: "Poster Series 02" },
-    { id: 3, image: "g3.jpg", title: "Experimental Typography" },
-    { id: 4, image: "g4.jpg", title: "Digital Artwork 01" },
-    { id: 5, image: "g5.jpg", title: "Editorial Spread" },
-    { id: 6, image: "g6.jpg", title: "Brand Exploration" },
-    { id: 7, image: "g7.jpg", title: "Packaging Concept" },
-    { id: 8, image: "g8.jpg", title: "Poster Series 03" },
-    { id: 9, image: "g9.jpg", title: "Digital Artwork 02" },
-    { id: 10, image: "g10.jpg", title: "Typography Study" },
-    { id: 11, image: "g11.jpg", title: "Collage Series" },
-    { id: 1, image: "sp1.jpg", title: "Poster Series 01" },
-    { id: 2, image: "sp2.jpg", title: "Poster Series 02" },
-    { id: 3, image: "sp3.jpg", title: "Experimental Typography" },
-    { id: 4, image: "sp4.jpg", title: "Digital Artwork 01" },
-    { id: 5, image: "sp5.jpg", title: "Editorial Spread" },
-    { id: 6, image: "church1.jpg", title: "Brand Exploration" },
-    { id: 7, image: "church2.jpg", title: "Packaging Concept" },
-    { id: 8, image: "church3.jpg", title: "Poster Series 03" },
-    { id: 9, image: "church4.jpg", title: "Digital Artwork 02" },
-    { id: 10, image: "church5.jpg", title: "Typography Study" },
-    { id: 7, image: "sport1.jpg", title: "Packaging Concept" },
-    { id: 8, image: "sport2.jpg", title: "Poster Series 03" },
-    { id: 9, image: "sport3.jpg", title: "Digital Artwork 02" },
-    { id: 10, image: "sport4.jpg", title: "Typography Study" }
-];
-
-const servicesData = [
-    {
-        title: "Brand Identity",
-        description: "Comprehensive visual identity systems including logos, color palettes, typography, and brand guidelines that create a cohesive and memorable brand presence."
-    },
-    {
-        title: "Print Design",
-        description: "Posters, packaging, editorial design, and physical collateral with meticulous attention to detail and production quality."
-    },
-    {
-        title: "Digital Design",
-        description: "UI/UX, social media assets, and digital campaigns optimized for engagement and conversion across all platforms."
-    },
-    {
-        title: "Art Direction",
-        description: "Conceptual development and visual strategy for campaigns, photoshoots, and multimedia projects."
-    },
-    {
-        title: "Motion Design",
-        description: "Animated graphics, title sequences, and kinetic typography that brings static designs to life."
-    },
-    {
-        title: "Consulting",
-        description: "One-on-one creative direction and design strategy sessions tailored to your specific needs and challenges."
-    }
-];
-
-// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // Load projects
-    loadProjects();
+  // --- DATA ---
+  const servicesData = [
+    { title: "UI/UX Design", description: "Crafting intuitive and visually appealing interfaces that provide meaningful user experiences." },
+    { title: "Product Strategy", description: "Developing a clear vision and roadmap for your product to ensure it meets market needs and business goals." },
+    { title: "Web Development", description: "Building responsive, high-performance websites using modern technologies and best practices." },
+  ];
 
-    // Load gallery
-    loadGallery();
-
-    // Load services
-    loadServices();
-
-    // Initialize image rotation for about section
-    if (aboutImages.length > 0) {
-        rotateImages();
+  // Rich portfolio data for gallery popup
+  const portfolioData = [
+    {
+      id: 'kenean-coffee',
+      title: 'Kenean Coffee Branding',
+      category: 'branding',
+      coverImage: 'co1.jpg',
+      galleryImages: ['co1.jpg', 'co2.jpg', 'co3.jpg', 'co4.jpg', 'co5.jpg'],
+      description: 'A comprehensive brand identity for a modern coffee shop, focusing on a clean aesthetic and memorable packaging. The goal was to create a brand that feels both premium and approachable.',
+      client: 'Kenean Coffee Co.',
+      year: '2023',
+      services: 'Branding, Packaging, Print'
+    },
+    {
+      id: 'persona-posters',
+      title: 'Persona Poster Series',
+      category: 'poster',
+      coverImage: 'persona1.jpg',
+      galleryImages: ['persona1.jpg', 'persona2.jpg', 'persona3.jpg'],
+      description: 'A series of posters for a conceptual film festival. Each poster uses high-contrast imagery and bold typography to explore themes of identity and perception.',
+      client: 'Internal Project',
+      year: '2022',
+      services: 'Art Direction, Print Design'
+    },
+    {
+      id: 'kabod-identity',
+      title: 'Kabod Church Identity',
+      category: 'branding',
+      coverImage: 'kabod(1).jpg',
+      galleryImages: ['kabod(1).jpg', 'kabod(2).jpg', 'kabod(3).jpg', 'kabod(4).jpg', 'kabod(5).jpg'],
+      description: 'Visual identity for a modern church community. The project included logo design, event branding, and social media templates to foster a cohesive and welcoming online presence.',
+      client: 'Kabod Community',
+      year: '2023',
+      services: 'Branding, Social Media'
+    },
+    {
+      id: 'sports-campaign',
+      title: 'Athletic Ad Campaign',
+      category: 'poster',
+      coverImage: 'sport1.jpg',
+      galleryImages: ['sport1.jpg', 'sport2.jpg', 'sport3.jpg', 'sport4.jpg'],
+      description: 'A dynamic advertising campaign for an athletic brand, featuring powerful action shots and energetic graphics to capture the spirit of competition and perseverance.',
+      client: 'Momentum Athletics',
+      year: '2022',
+      services: 'Art Direction, Advertising'
+    },
+    {
+      id: 'digital-art-1',
+      title: 'Abstract Grid System',
+      category: 'digital',
+      coverImage: 'g1.jpg',
+      galleryImages: ['g1.jpg', 'g2.jpg', 'g4.jpg', 'g10.jpg'],
+      description: 'An exploration of generative art using grid systems and color theory. These digital pieces experiment with structure, chaos, and visual rhythm.',
+      client: 'Personal Exploration',
+      year: '2024',
+      services: 'Digital Art, Creative Coding'
+    },
+    {
+      id: 'corp-branding',
+      title: 'Corporate Identity Pack',
+      category: 'branding',
+      coverImage: 'sp1.jpg',
+      galleryImages: ['sp1.jpg', 'sp2.jpg', 'sp3.jpg', 'sp4.jpg', 'sp5.jpg'],
+      description: 'A clean and professional identity package for a tech startup, including logo, business cards, and presentation templates designed for clarity and impact.',
+      client: 'Innovate Solutions',
+      year: '2021',
+      services: 'Branding, UI/UX'
     }
+  ];
 
-    // Initialize animations
-    initAnimations(); // This function will now be empty or have non-conflicting animations
+  // --- DOM ELEMENTS ---
+  const header = document.querySelector('.header');
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  const servicesGrid = document.querySelector('.services-grid');
+  const portfolioGrid = document.getElementById('portfolio-grid');
+  const portfolioFilters = document.querySelector('.portfolio-filters');
 
-    // Initialize scroll event for nav
-    initScrollEvents();
+  // Popup Elements
+  const popup = document.getElementById('project-popup');
+  const popupClose = document.getElementById('popup-close');
+  const popupMainImage = document.getElementById('popup-main-image');
+  const popupThumbnails = document.getElementById('popup-thumbnails');
+  const popupTitle = document.getElementById('popup-title');
+  const popupDescription = document.getElementById('popup-description');
+  const popupClient = document.getElementById('popup-client');
+  const popupYear = document.getElementById('popup-year');
+  const popupServices = document.getElementById('popup-services');
 
-    // Initialize intersection observer for animations
-    initIntersectionObserver();
+  // --- NAVIGATION & HEADER ---
+  if (navToggle) { navToggle.addEventListener('click', () => { navToggle.classList.toggle('active'); navMenu.classList.toggle('active'); }); }
+  function scrollHeader() { header.classList.toggle('scroll-header', window.scrollY >= 50); }
+  window.addEventListener('scroll', scrollHeader);
 
-    // Form submission
-    if (contactForm) {
-        contactForm.addEventListener('submit', handleFormSubmit);
-    }
-});
+  // --- DYNAMIC CONTENT ---
+  function loadServices() { servicesGrid.innerHTML = servicesData.map(s => `<div class="service-card animate-up"><h3>${s.title}</h3><p>${s.description}</p></div>`).join(''); }
+  function loadPortfolio() { portfolioGrid.innerHTML = portfolioData.map(p => `<div class="portfolio-card animate-up" data-category="${p.category}" data-id="${p.id}"><img src="${p.coverImage}" alt="${p.title}"><div class="portfolio-content"><h3>${p.title}</h3><p>${p.category.charAt(0).toUpperCase() + p.category.slice(1)}</p></div></div>`).join(''); }
 
-// Functions
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
+  loadServices();
+  loadPortfolio();
 
-    if (navMenu.classList.contains('active')) {
-        animateMenuLinks();
-    }
-}
-
-function animateMenuLinks() {
-    navLinks.forEach((link, index) => {
-        anime({
-            targets: link,
-            translateY: [20, 0],
-            opacity: [0, 1],
-            duration: 800,
-            delay: index * 100,
-            easing: 'easeOutExpo'
+  // --- PORTFOLIO FILTERING ---
+  if (portfolioFilters) {
+    portfolioFilters.addEventListener('click', (e) => {
+      if (e.target.classList.contains('filter-item')) {
+        portfolioFilters.querySelector('.active').classList.remove('active');
+        e.target.classList.add('active');
+        const filterValue = e.target.dataset.filter;
+        portfolioGrid.querySelectorAll('.portfolio-card').forEach(card => {
+          card.classList.add('hide');
+          setTimeout(() => { if (card.dataset.category === filterValue || filterValue === 'all') card.classList.remove('hide'); }, 100);
         });
+      }
     });
-}
+  }
 
-function rotateImages() {
-    let currentIndex = 0;
+  // --- POPUP LOGIC ---
+  function openPopup(projectId) {
+    const project = portfolioData.find(p => p.id === projectId);
+    if (!project) return;
 
-    // Set first image as active
-    aboutImages[currentIndex].classList.add('active');
-
-    setInterval(() => {
-        aboutImages.forEach(img => img.classList.remove('active'));
-        currentIndex = (currentIndex + 1) % aboutImages.length;
-        aboutImages[currentIndex].classList.add('active');
-
-        // Anime.js fade animation
-        anime({
-            targets: aboutImages[currentIndex],
-            opacity: [0, 1],
-            duration: 1000,
-            easing: 'easeInOutQuad'
-        });
-    }, 4000);
-}
-
-function loadProjects() {
-    projectsGrid.innerHTML = '';
-
-    projectsData.forEach(project => {
-        const projectCard = document.createElement('div');
-        projectCard.className = 'project-card';
-        projectCard.innerHTML = `
-            <img src="${project.images[0]}" alt="${project.title}" class="project-image">
-            <div class="project-overlay">
-                <h4 class="project-title">${project.title}</h4>
-                <p class="project-category">${project.category}</p>
-            </div>
-        `;
-
-        projectCard.addEventListener('click', () => openProjectPopup(project));
-        projectsGrid.appendChild(projectCard);
-    });
-}
-
-function loadServices() {
-    const servicesGrid = document.querySelector('.services-grid');
-    servicesGrid.innerHTML = '';
-
-    servicesData.forEach(service => {
-        const serviceCard = document.createElement('div');
-        serviceCard.className = 'service-card';
-        serviceCard.innerHTML = `
-            <div class="card-edge"></div>
-            <h3 class="card-title">${service.title}</h3>
-            <div class="card-arrow">→</div>
-            <div class="card-description">${service.description}</div>
-        `;
-        servicesGrid.appendChild(serviceCard);
-    });
-}
-
-function loadGallery() {
-    galleryGrid.innerHTML = '';
-
-    galleryData.forEach(item => {
-        const galleryItem = document.createElement('div');
-        galleryItem.className = 'gallery-item';
-        galleryItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}">
-        `;
-
-        galleryItem.addEventListener('click', () => {
-            // In a real implementation, you might want to show a larger version
-            alert(`Viewing: ${item.title}`);
-        });
-
-        galleryGrid.appendChild(galleryItem);
-    });
-}
-
-function openProjectPopup(project) {
-    const popup = document.querySelector('.project-popup');
-    const popupMainImage = document.querySelector('.main-image');
-    const popupThumbnails = document.querySelector('.thumbnail-grid');
-    const popupTitle = document.querySelector('.popup-title');
-    const popupDescription = document.querySelector('.popup-description');
-    const popupClient = document.querySelector('.detail-value.client');
-    const popupYear = document.querySelector('.detail-value.year');
-    const popupServices = document.querySelector('.detail-value.services');
-
-    // Set main image
-    popupMainImage.innerHTML = `<img src="${project.images[0]}" alt="${project.title}">`;
-
-    // Clear existing thumbnails
-    popupThumbnails.innerHTML = '';
-
-    // Add thumbnails
-    project.images.forEach((image, index) => {
-        const thumbnail = document.createElement('div');
-        thumbnail.className = 'thumbnail';
-        thumbnail.innerHTML = `<img src="${image}" alt="${project.title} thumbnail ${index + 1}">`;
-
-        thumbnail.addEventListener('click', () => {
-            // Change main image when thumbnail is clicked
-            popupMainImage.innerHTML = `<img src="${image}" alt="${project.title}">`;
-
-            // Highlight active thumbnail
-            document.querySelectorAll('.thumbnail').forEach(t => t.style.borderColor = 'var(--border-color)');
-            thumbnail.style.borderColor = 'var(--accent-light)';
-        });
-
-        popupThumbnails.appendChild(thumbnail);
-    });
-
-    // Highlight first thumbnail
-    if (popupThumbnails.firstChild) {
-        popupThumbnails.firstChild.style.borderColor = 'var(--accent-light)';
-    }
-
+    // Populate text content
     popupTitle.textContent = project.title;
     popupDescription.textContent = project.description;
     popupClient.textContent = project.client;
     popupYear.textContent = project.year;
     popupServices.textContent = project.services;
 
-    popup.classList.add('active');
+    // Populate gallery
+    popupMainImage.innerHTML = `<img src="${project.galleryImages[0]}" alt="Main view of ${project.title}">`;
+    popupThumbnails.innerHTML = project.galleryImages.map((img, index) =>
+      `<div class="thumbnail ${index === 0 ? 'active' : ''}" data-image="${img}">
+         <img src="${img}" alt="Thumbnail of ${project.title}">
+       </div>`
+    ).join('');
+
+    // Show popup
     document.body.classList.add('no-scroll');
+    popup.classList.add('active');
+  }
 
-    // Anime.js animation for popup
-    anime({
-        targets: popup,
-        opacity: [0, 1],
-        duration: 300,
-        easing: 'easeOutQuad'
-    });
+  function closePopup() {
+    document.body.classList.remove('no-scroll');
+    popup.classList.remove('active');
+  }
 
-    anime({
-        targets: '.popup-container',
-        scale: [0.9, 1],
-        opacity: [0, 1],
-        duration: 400,
-        delay: 200,
-        easing: 'spring(1, 80, 10, 0)'
-    });
-}
+  // Event listener for opening popup
+  portfolioGrid.addEventListener('click', (e) => {
+    const card = e.target.closest('.portfolio-card');
+    if (card) openPopup(card.dataset.id);
+  });
 
-function closeProjectPopup() {
-    const popup = document.querySelector('.project-popup');
-
-    anime({
-        targets: popup,
-        opacity: [1, 0],
-        duration: 300,
-        easing: 'easeInQuad',
-        complete: () => {
-            popup.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-}
-
-function toggleGallery() {
-    const gallery = document.querySelector('.fullscreen-gallery');
-
-    if (gallery.classList.contains('active')) {
-        anime({
-            targets: gallery,
-            opacity: [1, 0],
-            duration: 300,
-            easing: 'easeInQuad',
-            complete: () => {
-                gallery.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            }
-        });
-    } else {
-        gallery.classList.add('active');
-        document.body.classList.add('no-scroll');
-
-        anime({
-            targets: gallery,
-            opacity: [0, 1],
-            duration: 300,
-            easing: 'easeOutQuad'
-        });
-
-        anime({
-            targets: '.gallery-grid',
-            translateY: [20, 0],
-            opacity: [0, 1],
-            duration: 500,
-            delay: 300,
-            easing: 'easeOutExpo'
-        });
+  // Event listener for changing main image via thumbnails
+  popupThumbnails.addEventListener('click', (e) => {
+    const thumbnail = e.target.closest('.thumbnail');
+    if (thumbnail) {
+      popupThumbnails.querySelector('.active').classList.remove('active');
+      thumbnail.classList.add('active');
+      popupMainImage.innerHTML = `<img src="${thumbnail.dataset.image}" alt="Main view">`;
     }
-}
+  });
 
-function initAnimations() {
-}
+  // Event listeners for closing popup
+  popupClose.addEventListener('click', closePopup);
+  popup.addEventListener('click', (e) => { if (e.target === popup) closePopup(); });
 
-function initScrollEvents() {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
+  // --- ANIMATIONS ---
+  anime({ targets: '.hero-title .line', translateY: [100, 0], opacity: [0, 1], easing: 'easeOutExpo', duration: 1500, delay: anime.stagger(200, { start: 500 }) });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
     });
-}
+  }, { threshold: 0.1 });
 
-function initIntersectionObserver() {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
+  document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
 
-                if (target.classList.contains('about-text')) {
-                    anime({
-                        targets: target,
-                        translateX: [-50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('about-images')) {
-                    anime({
-                        targets: target,
-                        translateX: [50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('project-card')) {
-                    anime({
-                        targets: target,
-                        translateY: [50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        delay: anime.stagger(100),
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('service-card')) {
-                    anime({
-                        targets: target,
-                        translateY: [50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        delay: anime.stagger(100),
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('gallery-button')) {
-                    anime({
-                        targets: target,
-                        translateY: [20, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('pricing-container')) {
-                    target.classList.add('animate'); // This might be a typo, should be 'animated' or this class should be styled.
-
-                    // Animate table rows one by one
-                    const rows = target.querySelectorAll('.table-row');
-                    anime({
-                        targets: rows,
-                        translateY: [20, 0],
-                        opacity: [0, 1],
-                        duration: 600,
-                        delay: anime.stagger(100),
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('contact-info')) {
-                    anime({
-                        targets: target,
-                        translateX: [-50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('contact-form')) {
-                    anime({
-                        targets: target,
-                        translateX: [50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                if (target.classList.contains('footer')) {
-                    anime({
-                        targets: target,
-                        translateY: [50, 0],
-                        opacity: [0, 1],
-                        duration: 800,
-                        easing: 'easeOutExpo'
-                    });
-                }
-
-                target.classList.add('animated');
-                observer.unobserve(target);
-            }
-        });
-    }, {
-        threshold: 0.1
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const { offsetX, offsetY, target: { clientWidth, clientHeight } } = e;
+      const x = (offsetX / clientWidth) * 30 - 15;
+      const y = (offsetY / clientHeight) * 30 - 15;
+      anime({ targets: btn, x, y, scale: 1.05, duration: 300, easing: 'easeOutQuad' });
     });
-
-    // Observe all elements that need to be animated
-    // Added main section containers to this list for generic fade-in effect
-    document.querySelectorAll(
-        '.about, .projects, .services, .pricing, .contact, .footer, ' + // Main sections
-        '.about-text, .about-images, .project-card, .service-card, ' + // Specific elements within sections
-        '.gallery-button, .pricing-container, .contact-info, .contact-form' // Other animatable elements
-    ).forEach(el => {
-        observer.observe(el);
-    });
-}
-
-function handleFormSubmit(e) {
-    e.preventDefault();
-
-    // Get form values
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
-    // In a real app, you would send this to a server
-    console.log('Form submitted:', data);
-
-    // Show success message
-    alert('Thank you for your message! I will get back to you soon.');
-
-    // Reset form
-    e.target.reset();
-}
-
-// Event Listeners
-hamburger.addEventListener('click', toggleMenu);
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (navMenu.classList.contains('active')) {
-            toggleMenu();
-        }
-    });
-});
-
-galleryButton.addEventListener('click', toggleGallery);
-closeGallery.addEventListener('click', toggleGallery);
-closePopup.addEventListener('click', closeProjectPopup);
-
-// Close popup when clicking outside content
-projectPopup.addEventListener('click', (e) => {
-    if (e.target === projectPopup) {
-        closeProjectPopup();
-    }
+    btn.addEventListener('mouseleave', () => anime({ targets: btn, x: 0, y: 0, scale: 1, duration: 300, easing: 'easeOutQuad' }));
+  });
 });
